@@ -1,0 +1,35 @@
+<%- include("header") %>
+
+    <div class="box" id="heading">
+        <h1><%= listTitle %> </h1> <!--listTitle is key here-->
+    </div>
+    <div class="box">
+
+        <% listItems.forEach((items)=>{ %> 
+            <form action="/delete" method="post">
+                <div class="item">
+                    <% if(items.name === "Welcome to your To-Do List"){ %>
+                        <input type="checkbox" style="visibility: hidden;" >
+                        <p style="color: rgba(142, 128, 194, 0.941);"> <%= items.name %> </p>
+                    <% }else{ %>
+                        <input type="checkbox" name="checkbox" value="<%= items._id %>" onchange ="this.form.submit()">
+                        <p> <%= items.name %> </p>
+                    <% } %>
+                </div>
+            </form>
+        <% }) %> 
+        
+
+   
+
+
+        <form class ="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item">
+            <button type="submit" name="list" value="<%= listTitle %>">+</button>
+        </form>
+    </div>
+
+<%- include("footer") %>
+    
+
+    
